@@ -8,7 +8,6 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import ArrowBackIosNewTwoToneIcon from "@mui/icons-material/ArrowBackIosNewTwoTone";
 
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
@@ -19,60 +18,24 @@ import "./Login.css";
 
 const theme = createTheme();
 
+
 export default function Login() {
-  const [emailId, setEmailId] = useState("");
-  const [password, setPassword] = useState("");
-  const [backdata, setBackData] = useState([]);
   const navigate = useNavigate();
-
-  const emailChange = (event) => {
-    setEmailId(event.target.value);
-  };
-
-  const passChange = (event) => {
-    setPassword(event.target.value);
-  };
-
-  // function submitButton(event){
-  //   event.preventDefault();
-  //  let emailBackData = backdata.find((e) => {
-  //   //  console.log(e.emailId)
-  //   //  console.log(emailId)
-
-  // }
-  //  )
-  //   console.log(emailBackData)
-  // }
-
-  let submitButton = (event) => {
-    event.preventDefault();
-
-    const loginBody = {
-      username: emailId,
-      password: password,
-    };
-
-    axios
-      .post("http://localhost:8090/employee-security-login", loginBody)
-      .then((response) => {
-        sessionStorage.setItem("employeeLogin", response.data.token);
-        alert("Login Successfull");
-        navigate("/employee-news-feed");
-      })
-      .catch((error) => {
-        alert("Inavlid credentials.");
-      });
-
-    const found = backdata.find((element) => element.emailId == emailId);
-    // navigate("/employee-news-feed");
-    localStorage.setItem("LoginData", JSON.stringify(found));
-  };
-
-  useEffect(() => {
-    axios.get("http://localhost:8085/employees").then((response) => {
-      setBackData(response.data);
-    });
-  }, []);
+//  const (email,setEmail) =useState("");
+//  const (password,setPassword) =useState("");
+//  const history = useHistory();
+//  useEffect(() => {
+//     if(localStorage.getItem('user-info')){
+//         history.push("add")
+//     }
+//  },[]);
+//  async function submit(){
+//     console.warn(email,password);
+//     let item =(email,password);
+//     let result= await fetch("http://localhost:8080/users/all"),{
+//         method
+//     }
+//  }
 
   return (
     <div className="bg-image1">
@@ -107,8 +70,8 @@ export default function Login() {
                 name="email"
                 autoComplete="off"
                 autoFocus
-                onChange={emailChange}
-                value={emailId}
+               // onChange={(e)=>setEmail(e.target.value)}
+                //value={email}
               />
               <TextField
                 margin="normal"
@@ -119,8 +82,8 @@ export default function Login() {
                 type="password"
                 id="password"
                 autoComplete="off"
-                onChange={passChange}
-                value={password}
+               // onChange={(e)=>setPassword(e.target.value)}
+                //value={password}
               />
 
               <Button
@@ -130,7 +93,7 @@ export default function Login() {
                 sx={{ mt: 3, mb: 2 }}
                 id="btnlogin"
                 style={{ backgroundColor: "#1c060f" }}
-                onClick={submitButton}
+                //onClick={submitButton}
               >
                 Sign In
               </Button>

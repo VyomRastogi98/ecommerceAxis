@@ -4,6 +4,9 @@ import { useNavigate } from "react-router-dom";
 
 
 
+
+
+
 function Home() {
   const navigate = useNavigate();
 
@@ -14,11 +17,14 @@ function Home() {
           <a className="navbar-brand"> AMAZON </a>
           <div className="log"><a onClick={() => {
                   navigate("/login");
-                }}>Login</a></div>
-           
-        </div>
-       
+                }}>Login</a></div>    
+        </div> 
       </nav>
+      <div>
+     
+      </div>
+   
+      
       
       <footer className="copyrightfooter">
         <p> Copyright &#169; By AMAZON INDIA </p>

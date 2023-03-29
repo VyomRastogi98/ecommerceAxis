@@ -20,59 +20,8 @@ import Navigation from "./Navigation/Navigation";
 const theme = createTheme();
 
 export default function Register() {
-  const [emailId, setEmailId] = useState("");
-  const [password, setPassword] = useState("");
-  const [backdata, setBackData] = useState([]);
-  const navigate = useNavigate();
-
-  const emailChange = (event) => {
-    setEmailId(event.target.value);
-  };
-
-  const passChange = (event) => {
-    setPassword(event.target.value);
-  };
-
-  // function submitButton(event){
-  //   event.preventDefault();
-  //  let emailBackData = backdata.find((e) => {
-  //   //  console.log(e.emailId)
-  //   //  console.log(emailId)
-
-  // }
-  //  )
-  //   console.log(emailBackData)
-  // }
-
-  let submitButton = (event) => {
-    event.preventDefault();
-
-    const loginBody = {
-      username: emailId,
-      password: password,
-    };
-
-    axios
-      .post("http://localhost:8090/employee-security-login", loginBody)
-      .then((response) => {
-        sessionStorage.setItem("employeeLogin", response.data.token);
-        alert("Login Successfull");
-        navigate("/employee-news-feed");
-      })
-      .catch((error) => {
-        alert("Inavlid credentials.");
-      });
-
-    const found = backdata.find((element) => element.emailId == emailId);
-    // navigate("/employee-news-feed");
-    localStorage.setItem("LoginData", JSON.stringify(found));
-  };
-
-  useEffect(() => {
-    axios.get("http://localhost:8085/employees").then((response) => {
-      setBackData(response.data);
-    });
-  }, []);
+  const navigate =useNavigate();
+  
 
   return (
     <div className="bg-image1">
@@ -107,8 +56,8 @@ export default function Register() {
                 name="name"
                 autoComplete="off"
                 autoFocus
-                onChange={emailChange}
-                value={emailId}
+                //onChange={emailChange}
+               // value={emailId}
               />
                  <TextField
                 margin="normal"
@@ -119,8 +68,8 @@ export default function Register() {
                 name="name"
                 autoComplete="off"
                 autoFocus
-                onChange={emailChange}
-                value={emailId}
+                //onChange={emailChange}
+                //value={emailId}
               />
               <TextField
                 margin="normal"
@@ -131,8 +80,8 @@ export default function Register() {
                 name="email"
                 autoComplete="off"
                 autoFocus
-                onChange={emailChange}
-                value={emailId}
+                //onChange={emailChange}
+                //value={emailId}
               />
               <TextField
                 margin="normal"
@@ -143,8 +92,8 @@ export default function Register() {
                 type="password"
                 id="password"
                 autoComplete="off"
-                onChange={passChange}
-                value={password}
+                //onChange={passChange}
+                //value={password}
               />
              
 
@@ -155,7 +104,7 @@ export default function Register() {
                 sx={{ mt: 3, mb: 2 }}
                 id="btnlogin"
                 style={{ backgroundColor: "#1c060f" }}
-                onClick={submitButton}
+                //onClick={submitButton}
               >
                 REGISTER
               </Button>
